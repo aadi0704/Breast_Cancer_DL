@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/Static/Css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Css/style.css') }}">
+    <style>
+        /* --- GLOBAL --- */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: url("https://images.unsplash.com/photo-1581090700227-4c4f6afea39b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0") no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: -1;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff69b4;
+            letter-spacing: 1px;
+        }
+
+        nav .menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav .menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav .menu li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff69b4;
+            transition: width 0.3s ease;
+        }
+
+        nav .menu li a:hover {
+            color: #ff69b4;
+        }
+
+        nav .menu li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .web-title {
+            max-width: 900px;
+            background: rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
+            animation: slideUp 1.5s ease;
+        }
+
+        .web-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #ff69b4;
+        }
+
+        .web-title p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #ff69b4;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #ff85c1;
+            transform: translateY(-3px);
+            box-shadow: 0px 5px 15px rgba(255, 105, 180, 0.5);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Breast Cancer Prediction</div>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('classify') }}">Classify</a></li>
+                <li><a href="{{ url_for('team') }}">Team</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main"> 
+        <div class="web-title">
+            <h2>Advanced Breast Cancer Prediction Using Deep Learning</h2>
+            <p>
+                Breast cancer is one of the most prevalent diseases in women and the second leading cause of death.  
+                Traditional detection methods require several laboratory tests and expert evaluations.  
+                Automated breast cancer detection is crucial for timely treatment.  
+                Our AI-driven system leverages advanced deep learning and feature selection techniques  
+                to achieve highly accurate predictions and support healthcare professionals in early diagnosis.
+            </p>
+            <a href="{{ url_for('classify') }}" class="cta-btn">Start Prediction</a>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Breast Cancer Prediction | All Rights Reserved
+    </footer>
+</body>
+</html>

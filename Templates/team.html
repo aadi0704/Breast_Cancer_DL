@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Team </title>
+    <link rel="stylesheet" href="/Static/Css/team.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Css/team.css') }}">
+    <style>
+        /* --- GLOBAL --- */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: url("https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0") no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: -1;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff69b4;
+            letter-spacing: 1px;
+        }
+
+        nav .menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav .menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav .menu li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff69b4;
+            transition: width 0.3s ease;
+        }
+
+        nav .menu li a:hover {
+            color: #ff69b4;
+        }
+
+        nav .menu li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .web-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease;
+        }
+
+        /* --- TEAM CARDS --- */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            animation: slideUp 1.5s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 25px rgba(255,105,180,0.4);
+        }
+
+        .team-card h3 {
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+
+        .team-card p {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.85);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Breast Cancer Prediction</div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('classify') }}">Classify</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main"> 
+        <div class="web-title">
+            <h2>Meet Our Team</h2>
+        </div>
+
+        <div class="team-container">
+            <div class="team-card">
+                <h3>Team Leader</h3>
+                <p>MD. Ameen</p>
+            </div>
+            <div class="team-card">
+                <h3>Team Member 1</h3>
+                <p>K. Prabhu</p>
+            </div>
+            <div class="team-card">
+                <h3>Team Member 2</h3>
+                <p>N. Sai</p>
+            </div>
+            <div class="team-card">
+                <h3>Team Member 3</h3>
+                <p>M. Aadi</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Breast Cancer Prediction | All Rights Reserved
+    </footer>
+</body>
+</html>

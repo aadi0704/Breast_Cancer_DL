@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> About </title>
+    <link rel="stylesheet" href="/Static/Css/about.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Css/about.css') }}">
+    <style>
+        /* --- GLOBAL --- */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: url("https://images.unsplash.com/photo-1631815589945-b8a1ac9b8723?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0") no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: -1;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff69b4;
+            letter-spacing: 1px;
+        }
+
+        nav .menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav .menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav .menu li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff69b4;
+            transition: width 0.3s ease;
+        }
+
+        nav .menu li a:hover {
+            color: #ff69b4;
+        }
+
+        nav .menu li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- MAIN --- */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .content-box {
+            max-width: 900px;
+            background: rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+            animation: slideUp 1.5s ease;
+        }
+
+        .content-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff69b4;
+            text-align: center;
+        }
+
+        .content-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+
+        .extra-points {
+            margin-top: 20px;
+        }
+
+        .extra-points h3 {
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+
+        .extra-points ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .extra-points ul li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 1.05rem;
+            animation: fadeIn 2s ease;
+        }
+
+        .extra-points ul li::before {
+            content: "✔";
+            color: #ff69b4;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.85);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">BREAST CANCER PREDICTION</div>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('classify') }}">Prediction</a></li>
+                <li><a href="{{ url_for('team') }}">Team</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main"> 
+        <div class="content-box">
+            <h2>Breast Cancer Prediction Using Deep Learning</h2>
+            <p>
+                Breast cancer is one of the most prevalent diseases affecting women worldwide and remains a leading cause of death. 
+                Traditional detection methods often require extensive medical testing and expert evaluation, which can delay diagnosis and treatment.
+            </p>
+            <p>
+                Our project leverages advanced <b>deep learning models</b> to enable faster and more accurate prediction of breast cancer from medical images. 
+                By applying effective <b>feature selection techniques</b>, we improve model accuracy, helping patients receive early treatment.
+            </p>
+            <p>
+                At our platform, we are committed to raising awareness and promoting innovation in healthcare. 
+                We believe that technology can play a vital role in making healthcare more accessible and effective.
+            </p>
+
+            <div class="extra-points">
+                <h3>Our Focus:</h3>
+                <ul>
+                    <li>Promoting early detection through AI-driven predictions.</li>
+                    <li>Empowering doctors with advanced diagnostic tools.</li>
+                    <li>Raising awareness about breast cancer prevention.</li>
+                    <li>Encouraging research and innovation in healthcare AI.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Breast Cancer Prediction | All Rights Reserved
+    </footer>
+</body>
+</html>
