@@ -31,17 +31,21 @@ def classify():
 # Backend Model prediction using api
 @app.route('/predict', methods=['POST'])
 def predict():
-    print(request.form)
-    img = request.files['file'].read()
-    img = Image.open(io.BytesIO(img))
-    img = img.resize((64, 64))
-    img_array = np.array(img) / 255.
-    img_array = np.expand_dims(img_array, axis=0)
-    pred = model.predict(img_array)[0]
-    class_idx = np.argmax(pred)
-    class_names = ['Benign','Malignant']
-    predicted_class = class_names[class_idx]
-    return jsonify({'class': predicted_class})
+    try:
+        img = request.files['file'].read()
+        img = Image.open(io.BytesIO(img)).convert('RGB')
+        img = img.resize((64, 64))
+        img_array = np.array(img) / 255.
+        img_array = np.expand_dims(img_array, axis=0)
+        pred = model.predict(img_array)[0]
+        class_idx = np.argmax(pred)
+        class_names = ['Benign', 'Malignant']
+        predicted_class = class_names[class_idx]
+        return jsonify({'class': predicted_class})
+    except Exception as e:
+        print(f"Prediction error: {e}")
+        return jsonify({'error': 'Prediction failed'}), 500
+
 
 # Routing Team page
 @app.route('/team')
