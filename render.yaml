@@ -1,2 +1,9 @@
-build:
-  pythonVersion: 3.10
+services:
+  - type: web
+    name: breast-cancer-app
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    pythonVersion: 3.10
+    repo: https://github.com/aadi0704/Breast_Cancer_DL
+    branch: master
