@@ -14,7 +14,7 @@ app = Flask(__name__,static_folder='Static')
 
 # Loading model to backend
 print("Checking breast cancer prediction Model")
-model_filename = (os.path.join(os.getcwd(),'model','cancer.h5'))
+model_filename = (os.path.join(os.getcwd(),'Model','cancer.h5'))
 print(model_filename)
 model = load_model(model_filename)
 
