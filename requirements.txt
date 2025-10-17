@@ -1,4 +1,6 @@
 ﻿setuptools>=65.0.0
+wheel>=0.38.4
+pip>=23.0.1
 gunicorn>=20.1.0
 beautifulsoup4==4.12.2
 Flask==2.3.2
